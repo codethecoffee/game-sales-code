@@ -1,5 +1,4 @@
 from node import Node
-from math import log
 import math
 from copy import deepcopy
 
@@ -309,7 +308,7 @@ def entropy(examples):
 
     for item in classes:
         curr_prob = classes[item] / num_entries
-        entropy -= curr_prob * log(curr_prob, 2)
+        entropy -= curr_prob * math.log(curr_prob, 2)
 
     return entropy
 
