@@ -2,6 +2,8 @@ import ID3
 from parser import parse
 import random
 
+# TODO: More elaborate unit testing
+
 
 def testPruningOnData(inFile):
     withPruning = []
@@ -50,8 +52,6 @@ def testPruningOnData(inFile):
 
 def main():
     testPruningOnData("data/game_data.csv")
-    # testID3AndTest()
-    # testPruning()
 
 
 if __name__ == '__main__':

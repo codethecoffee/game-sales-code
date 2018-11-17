@@ -2,21 +2,11 @@ from node import Node
 import math
 from copy import deepcopy
 
-
-def mostFrequentClass(examples):
-    classes = [ex.get('Greatest_Sales') for ex in examples]
-    unique_classes = (list(set(classes)))
-    target = unique_classes[0]
-    curr_counter = 0
-    for uniques in unique_classes:
-        counter = 0
-        for curr_class in classes:
-            if curr_class == uniques:
-                counter += 1
-        if counter > curr_counter:
-            target = uniques
-            curr_counter = counter
-    return target
+# TODO: Parse the list of genres
+# Right now the best attribute is always platform
+# because no two lists of genres are "identical"
+# We need to look for OVERLAP in genres, not whether they are
+# exactly the same
 
 
 def ID3(examples, default):
@@ -193,6 +183,22 @@ def majorityClass(node):
             max_instances = value
 
     return majority
+
+
+def mostFrequentClass(examples):
+    classes = [ex.get('Greatest_Sales') for ex in examples]
+    unique_classes = (list(set(classes)))
+    target = unique_classes[0]
+    curr_counter = 0
+    for uniques in unique_classes:
+        counter = 0
+        for curr_class in classes:
+            if curr_class == uniques:
+                counter += 1
+        if counter > curr_counter:
+            target = uniques
+            curr_counter = counter
+    return target
 
 
 def numFails(node, examples):
