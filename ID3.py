@@ -16,7 +16,6 @@ def ID3(examples, default):
     and the target class variable is a special attribute with the name "Class".
     Any missing attributes are denoted with a value of "?"
     '''
-    print("CALLING ID3")
     if len(examples) == 0:
         print("len == 0")
         return Node(default, True)
