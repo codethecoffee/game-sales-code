@@ -1,5 +1,6 @@
 import csv
-
+from shutil import copyfile
+import pandas as pd
 
 def parse(filename):
     '''
@@ -10,6 +11,9 @@ def parse(filename):
     raw_data = []
     csvfile = open(filename, 'r')
     fileToRead = csv.reader(csvfile)
+
+    temp_file = open("data/updated_data.csv", 'w+')
+    writ = csv.writer(temp_file)
 
     headers = next(fileToRead)
 
@@ -31,6 +35,15 @@ def parse(filename):
         deleteFields(game)
         print(game)
         print("\n")
+
+    writ.writerow(raw_data[0])
+
+    # super ghetto but deal with it i left this till the last moment lol
+    for game in raw_data:
+        temp = [game["Genre"], game["Publisher"], game["Rating"], game["Greatest_Sales"]]
+        writ.writerow(temp)
+
+    temp_file.close()
 
     return raw_data
 
